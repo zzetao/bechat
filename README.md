@@ -10,7 +10,7 @@ Coding...
 
 ## Run it
 
-1. Clone it. `git clone https://github.com/zzetao/bechat`
+1. Clone it. `git clone https://github.com/zzetao/bechat.git`
 2. Install dependencies by npm.  `npm install`
 3. Open the project in XCode, just build and run it.
 
