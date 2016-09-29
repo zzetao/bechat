@@ -9,16 +9,35 @@ import {
 
 
 export default class InputBox extends Component {
-	sendHandle() {
-		AlertIOS.alert('send.....')
+	constructor() {
+		super();
+
+		this.state = {
+			text: ''
+		}
 	}
+
+	sendHandle() {
+		let { text } = this.state;
+		if (text){
+			this.props.onPress(text); // callback
+			this.setState({
+				text: ''
+			})
+			this.refs.input.clear(); // clear text
+		}
+	}
+
 	render() {
 		return(
 			<View style={styles.container}> 
         <TextInput 
+        	ref="input"
         	style={styles.input}
           placeholder={'Type a message...'}
           placeholderTextColor='#eee'
+          onChangeText={(text) => this.setState({text})}
+          onSubmitEditing={this.sendHandle.bind(this)}
         />
         <TouchableHighlight
         	onPress={this.sendHandle.bind(this)}
